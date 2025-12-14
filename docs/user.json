@@ -1,7 +1,10 @@
 {
-  "redeem_code": "AERB2A2FQ3L1",
-  "name": "Amir",
-  "phone": "09375719936",
-  "expiry_jalali": "1404/09/26",
-  "status": "no" 
-}
+    "users": [
+      {
+        "redeem_code": "NGXB7A2FQ3L1",
+        "name": "amir",
+        "phone": "09375719936",
+        "expiry_jalali": "1404/09/30"
+      }
+    ]
+  }
