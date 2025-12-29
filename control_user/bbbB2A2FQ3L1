@@ -1,7 +1,8 @@
 {
-  "redeem_code": "bbbB2A2FQ3L1",
-  "name": "Amir",
+  "name": "amir",
   "phone": "09375719936",
-  "expiry_jalali": "1404/09/26",
-  "status": "yes" 
+  "start_jalali": "1404/08/22",
+  "expiry_jalali": "1404/10/22",
+  "status": true,
+  "redeem_status": true
 }
