@@ -1,1 +1,8 @@
-a
+{
+  "name": "mohamad barzamini",
+  "phone": "09371912818",
+  "start_jalali": "1404/10/10",
+  "expiry_jalali": "1404/11/01",
+  "status": true,
+  "redeem_status": true
+}
