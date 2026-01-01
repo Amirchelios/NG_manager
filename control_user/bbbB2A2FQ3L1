@@ -1,8 +1,0 @@
-{
-  "name": "test",
-  "phone": "0912345678",
-  "start_jalali": "1404/10/10",
-  "expiry_jalali": "1404/11/10",
-  "status": true,
-  "redeem_status": true
-}
