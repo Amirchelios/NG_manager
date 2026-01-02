@@ -1,0 +1,295 @@
+{
+  "log": {
+    "loglevel": "warning"
+  },
+  "dns": {
+    "hosts": {
+      "dns.google": [
+        "8.8.8.8",
+        "8.8.4.4",
+        "2001:4860:4860::8888",
+        "2001:4860:4860::8844"
+      ],
+      "dns.alidns.com": [
+        "223.5.5.5",
+        "223.6.6.6",
+        "2400:3200::1",
+        "2400:3200:baba::1"
+      ],
+      "one.one.one.one": [
+        "1.1.1.1",
+        "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"
+      ],
+      "1dot1dot1dot1.cloudflare-dns.com": [
+        "1.1.1.1",
+        "1.0.0.1",
+        "2606:4700:4700::1111",
+        "2606:4700:4700::1001"
+      ],
+      "cloudflare-dns.com": [
+        "104.16.249.249",
+        "104.16.248.249",
+        "2606:4700::6810:f8f9",
+        "2606:4700::6810:f9f9"
+      ],
+      "dns.cloudflare.com": [
+        "104.16.132.229",
+        "104.16.133.229",
+        "2606:4700::6810:84e5",
+        "2606:4700::6810:85e5"
+      ],
+      "dot.pub": [
+        "1.12.12.12",
+        "120.53.53.53"
+      ],
+      "doh.pub": [
+        "1.12.12.12",
+        "120.53.53.53"
+      ],
+      "dns.quad9.net": [
+        "9.9.9.9",
+        "149.112.112.112",
+        "2620:fe::fe",
+        "2620:fe::9"
+      ],
+      "dns.yandex.net": [
+        "77.88.8.8",
+        "77.88.8.1",
+        "2a02:6b8::feed:0ff",
+        "2a02:6b8:0:1::feed:0ff"
+      ],
+      "dns.sb": [
+        "185.222.222.222",
+        "2a09::"
+      ],
+      "dns.umbrella.com": [
+        "208.67.220.220",
+        "208.67.222.222",
+        "2620:119:35::35",
+        "2620:119:53::53"
+      ],
+      "dns.sse.cisco.com": [
+        "208.67.220.220",
+        "208.67.222.222",
+        "2620:119:35::35",
+        "2620:119:53::53"
+      ],
+      "engage.cloudflareclient.com": [
+        "162.159.192.1",
+        "2606:4700:d0::a29f:c001"
+      ]
+    },
+    "servers": [
+      {
+        "address": "https://dns.alidns.com/dns-query",
+        "domains": [
+          "domain:alidns.com",
+          "domain:doh.pub",
+          "domain:dot.pub",
+          "domain:360.cn",
+          "domain:onedns.net"
+        ],
+        "skipFallback": true
+      },
+      {
+        "address": "https://cloudflare-dns.com/dns-query",
+        "domains": [
+          "geosite:google"
+        ],
+        "skipFallback": true
+      },
+      {
+        "address": "https://dns.alidns.com/dns-query",
+        "domains": [
+          "geosite:private",
+          "geosite:cn"
+        ],
+        "skipFallback": true
+      },
+      {
+        "address": "223.5.5.5",
+        "domains": [
+          "full:dns.alidns.com",
+          "full:cloudflare-dns.com"
+        ],
+        "skipFallback": true
+      },
+      "https://cloudflare-dns.com/dns-query"
+    ]
+  },
+  "inbounds": [
+    {
+      "tag": "socks",
+      "port": 10808,
+      "listen": "127.0.0.1",
+      "protocol": "mixed",
+      "sniffing": {
+        "enabled": true,
+        "destOverride": [
+          "http",
+          "tls"
+        ],
+        "routeOnly": false
+      },
+      "settings": {
+        "auth": "noauth",
+        "udp": true,
+        "allowTransparent": false
+      }
+    }
+  ],
+  "outbounds": [
+    {
+      "tag": "proxy",
+      "protocol": "vless",
+      "settings": {
+        "vnext": [
+          {
+            "address": "85.192.26.199",
+            "port": 11289,
+            "users": [
+              {
+                "id": "563e2d29-0120-4fe3-b3ac-a6bfd81714bb",
+                "email": "t@t.tt",
+                "security": "auto",
+                "encryption": "none"
+              }
+            ]
+          }
+        ]
+      },
+      "streamSettings": {
+        "network": "tcp",
+        "security": "reality",
+        "realitySettings": {
+          "serverName": "google.com",
+          "fingerprint": "chrome",
+          "show": false,
+          "publicKey": "hOjTSwilETXS2r_qiigTT5UhRUF-WA1K8vdmnT4gviA",
+          "shortId": "2f3afc77",
+          "spiderX": "/",
+          "mldsa65Verify": "juNVydTIlATii0g6tMSAGmyEZCz3sWrhERzIC3fnTyV2GINdN7GR2WjNkjiOuejzBjZJmFazZl9utDNfZYkoX14PjdCl97qkhHcCKLTRKPKSUJbyUQD8sX89-hMTXxhecWB-d_tLyqlup923RNM0nGHScS6RwizR0w5YcC5s5sfUFEqVoJzhM-By7mlNhRnHgk3-BoTWlofR4KxXTIslK8OzVLOwfFw3KeYtn2pLIeETlpnzenc4VNCtciPvHLNmgFQE3o0q2LUmJkxtqdHdqe3ou7YtWHyAx5THhj4JnKm-vSsEjL_Pck_heE522F8MSEnKJLDaDP1I4fVY1r5_LWozsrLoW_Wyaqg6nE-k7MDkTxB72LK_KJ_mdhWpJum3t6Z0c28WXEOZcYtPyWcokhFz5FG9Axizz8LZlIWqjQaQRF3tyraUEn299Ian0r644tw86QmmQSz_z4Pix3S2xiL6anSeMwnQL2KdCL44NldotHqHn0dDN6DGWZPldzBMDN1XJ5ysxXyc7DHjlXbMftZy5xdk4Aj0HOmhjLvAspJr8d3maEWc2ppbC2fCePeJtDBtwiY3MEk5SuScH0JEQtY9xwkhsjx2UKfFbAvwb2yuRyX4pMCEWqv8XK6lIUMeKodFx0y9Onp2kD-ITYc_enlhp7fsos6r7i3CX40AH1-0SYc0VqIuSc-g2XG8bnn9OiODkTG47UcgH_rzhdH7ETU7qgw9DfaMOQWGWHnk_z4sOqhMWuBUkEqN93J7KbCQ22M_w2-l0Pm9ehwRfP6vt5adQcEzEGQ6IBTOlFQ3N2ZWzGZY4_qkz_5R9gL_SchOTfC-gF1-q5VwkpCV4dYHg_toIZNaC4TNJPC319Axs-5x7o9LmHx6nvV24XI64u81Ipft4bD2seMFZkvyhnheDR5xRsEdanlp0RDv5N3wBZL2Vi_WMC-JaIip_luKD4EdWWpRTaO7vq4fNgYrZyfbZknSsJhYQYm05LdmQOOVP0JkODP6wEghC6czPoJOslzeCiSjWtam2rxrP35Ahn6N6P0bnDbymeq9nzDVZi1d_0O01P3o3W57GvlPlVqCdt8qmC9N1U3z2o62kxzNkdUWNsZUolT4q5AkL-3l5xqZnel4yoe0v04MpnCIed9uh4_B8SsJ0DB60S82ebStbnwXQ6yfRePi--KBO9WmIdpI6EYWoN6_RZ3giyUfN8uUoTpFG4OB_5GBM7dNV2NR4X-thudRF5k5Fst64ZerQ5c3P4b2AGHQ4kpAcX-9YtKH9JXe_kO-X-YYMoq_Wm7ady1m3cFyJwHCXypJoi2J_FRAdijYMiIEaR_KUc3JnB2QuBnLBz-z_CS3S6e1Sh_IwCP5FSZALD1GTT-DaERYI4ljaG0Dy1LBSlVH41agZBt5WkWotCx02ZuDJVbenVF0LUfbA7aw2N6kQPWA1eWnbsD1KpH6cLYDAZupJMMsKfeyCx0owXf8JfMlFJ-uZ-reCnKkyecgA3IjbjNtBGpac_9rj0jhfKue21Z0KtlsoZ_oNo1R02N0cEVHH1OQyfSRmtdqbeD1yx5_rfK-fyg6cK8_Unqu06gxMxcjZrYaOPrZXh5hJSgZ4pot8fXVDwsPzgUoEwjWDC-awvaYD8E0YqkzoSHf9ihMwHfROEC_VFOi1uiyWFaugFiDZ8w18sYfvD1Mdr35KMcOTc_f1NSB5NQdSciEwZJdhz7qWzOifqMGCbjPGiOOFV5HXACPVMqUoaApJO4q4bTR8Q897gQi0nko96oelp4-4pxc5XC9mKtLtaX63qNJRMD8FKd_yZBbz3fdL1x5S1Lc6pif7HpeBwbaE4DRXFJZ-C92WpRxHRmhrmjqK9IpCMSCZJXMNkjOoB1abND_Zk3ZpcUWEqKbPOJVTQvtv1OuctDMBk8YgnXLybpaRTYbHpHVs8TI4nv0Wq-nQXulSHlkcKW3Fd2MiWVzHxbUs_kTwpNY2rueSisVoEVEJywrf1ftRSiy62y8L-GB-uUvRDffd9mxFHrd9jw4_avkZ6UEgJBUa6XBmXOC3nFrsCZNz5FHyRgi-2eeoyAzVyHqBWpWDSWxLmzWfkpNEg7G-J701Dz4GlaEECAWlnZnOfFTQ_f-r7e3owk6uAyut9cNS54nLVAICR2WnSr-S2mL9AzV9zaZULBf6IaD_qhYcV5w9T0sZCh-oSmS0T2LceDwC4mljUqOq7MVPoLO7mdFQCjjrVjuZ3eBuneJFeC4EkfQmBJwpv3iqSzv0MbYRe44857yBAtb_GFyDpjtvem3g5sQkdRzsljaX7Q5IERj66LpluaqNXOOKNdZidTRWOPH13ED2lqAoE6027EkE2vDLXo3gL0A8SgzX0qumvdMLknlh8EzIeDdAtS1TR6Eaa7CKVbnqHoKmwBsTJsHJLSC7o5pN_vUT01v-cU1nNYwD3yOCjEHTJ5e8m3XNhpv2RrXDQDRwYoljfRkZsky0Z8wtG84AlULa88JFJS35GqoWoNWZf1HdRTBga91ChqQTETKnjhHugbU3HXhT3x4Z5vYKNrRN6re1jLO6F9hKKdF85GBiT_wei_20JtAHOvl_YiNguU85x2lHyuTIHp6B14"
+        }
+      },
+      "mux": {
+        "enabled": false,
+        "concurrency": -1
+      }
+    },
+    {
+      "tag": "direct",
+      "protocol": "freedom"
+    },
+    {
+      "tag": "block",
+      "protocol": "blackhole"
+    }
+  ],
+  "routing": {
+    "domainStrategy": "AsIs",
+    "rules": [
+      {
+        "type": "field",
+        "inboundTag": [
+          "api"
+        ],
+        "outboundTag": "api"
+      },
+      {
+        "type": "field",
+        "port": "443",
+        "network": "udp",
+        "outboundTag": "block"
+      },
+      {
+        "type": "field",
+        "outboundTag": "proxy",
+        "domain": [
+          "geosite:google"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "ip": [
+          "geoip:private"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "geosite:private"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "ip": [
+          "223.5.5.5",
+          "223.6.6.6",
+          "2400:3200::1",
+          "2400:3200:baba::1",
+          "119.29.29.29",
+          "1.12.12.12",
+          "120.53.53.53",
+          "2402:4e00::",
+          "2402:4e00:1::",
+          "180.76.76.76",
+          "2400:da00::6666",
+          "114.114.114.114",
+          "114.114.115.115",
+          "114.114.114.119",
+          "114.114.115.119",
+          "114.114.114.110",
+          "114.114.115.110",
+          "180.184.1.1",
+          "180.184.2.2",
+          "101.226.4.6",
+          "218.30.118.6",
+          "123.125.81.6",
+          "140.207.198.6",
+          "1.2.4.8",
+          "210.2.4.8",
+          "52.80.66.66",
+          "117.50.22.22",
+          "2400:7fc0:849e:200::4",
+          "2404:c2c0:85d8:901::4",
+          "117.50.10.10",
+          "52.80.52.52",
+          "2400:7fc0:849e:200::8",
+          "2404:c2c0:85d8:901::8",
+          "117.50.60.30",
+          "52.80.60.30"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "domain:alidns.com",
+          "domain:doh.pub",
+          "domain:dot.pub",
+          "domain:360.cn",
+          "domain:onedns.net"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "ip": [
+          "geoip:cn"
+        ]
+      },
+      {
+        "type": "field",
+        "outboundTag": "direct",
+        "domain": [
+          "geosite:cn"
+        ]
+      }
+    ]
+  }
+}
