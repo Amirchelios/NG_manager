@@ -1,5 +1,1 @@
 https://raw.githubusercontent.com/sakha1370/OpenRay/refs/heads/main/output_iran/iran_top100_checked.txt
-https://raw.githubusercontent.com/darkvpnapp/CloudflarePlus/refs/heads/main/proxy
-https://raw.githubusercontent.com/Kwinshadow/TelegramV2rayCollector/main/sublinks/mix.txt
-https://raw.githubusercontent.com/hans-thomas/v2ray-subscription/refs/heads/master/servers.txt
-https://raw.githubusercontent.com/parvinxs/Submahsanetxsparvin/refs/heads/main/Sub.mahsa.xsparvin
